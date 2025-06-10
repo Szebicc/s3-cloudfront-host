@@ -1,31 +1,61 @@
-## Quick start
+
+# Static Website Hosting with CloudFront and S3
+
+This project sets up a static website hosted on AWS S3 with a CloudFront distribution for fast, secure delivery.
+
+## Quick Start
 
 ### Prerequisites
 
 Ensure the following are installed on your system:
 
-[![My Skills](https://skillicons.dev/icons?i=js,html,css,wasm)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=nodejs,npm,terraform,py,aws)](https://skillicons.dev)
 
+- Node.js (v16 or later)
+- npm (v8 or later)
+- Terraform (v1.5 or later)
+- Python 3 (v3.8 or later)
+- AWS CLI (v2 or later)
+- AWS account with configured credentials (e.g., run `aws configure` or set `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`)
 
-### Verify installations
+### Verify Installations
 
+Check that all tools are installed correctly:
+
+```bash
+node -v
+npm -v
+terraform -v
+python3 --version
+aws --version
+```
+
+### Start the Application
+
+1. **Clone the repository** (if applicable):
    ```bash
-   node -v
-   npm -v
+   git clone https://github.com/Szebicc/s3-cloudfront-host.git
+   cd <repository-root>
    ```
-### Start the application 
 
-    ```bash
-    cd cloudfront\ s3\ hosting/static-host
-    npm run build
-    ```
-   This will build the frontend.
+2. **Build the frontend**:
+   ```bash
+   cd cloudfront-s3-hosting/static-host
+   npm install
+   npm run build
+   ```
+   - This builds the static website files.
 
-    ```bash
-    cd ../terraform
-    terraform apply
-    ```
-    This will create the AWS resources.
+3. **Deploy AWS resources**:
+   ```bash
+   cd ../terraform
+   terraform init
+   terraform plan
+   terraform apply
+   ```
+   - `terraform init`: Downloads providers and modules.
+   - `terraform plan`: Previews AWS resources (e.g., S3 bucket, CloudFront distribution).
+   - `terraform apply`: Creates resources; review the plan and confirm.
 
 4. **Upload to S3**:
    ```bash
